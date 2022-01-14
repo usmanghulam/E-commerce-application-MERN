@@ -1,9 +1,19 @@
 import React from 'react';
-function App() {
+import { StoreContext } from './mobx/context';
+import { useStore } from './mobx/store';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './routes/route';
+
+const App = () => {
+  const store = useStore();
   return (
-    <div className="App">
-      Hello world
-    </div>
+    <StoreContext.Provider value={store}>
+      <BrowserRouter>
+        <div className="App">
+          <Router />
+        </div>
+      </BrowserRouter>
+    </StoreContext.Provider>
   );
 }
 
